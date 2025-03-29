@@ -7,11 +7,13 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+    colors: {
+      "deep-navy": "#2b3945", // Dark Mode Elements
+      "midnight-blue": "#202c37", // Dark Mode Background
+      "charcoal-black": "#111517", // Light Mode Text
+      "slate-gray": "#858585", // Light Mode Input
+      "cloud-white": "#fafafa", // Light Mode Background
+      "pure-white": "#ffffff", // Dark Mode Text & Light Mode Elements
     },
   },
   plugins: [],
