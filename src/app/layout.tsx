@@ -20,7 +20,9 @@ interface Props {
 export default function RootLayout({ children, }: Readonly<Props>) {
   return (
     <html lang="en">
-      <body className={`${nunito.className} antialiased`}>{children}</body>
+      <body className={`${nunito.className} antialiased bg-cloud-white`}>
+        {children}
+      </body>
     </html>
   );
 }
