@@ -9,7 +9,9 @@ export default function HomeLayout({ children }: Props) {
   return (
     <>
       <Header />
-      {children}
+      <main className="container mx-auto p-2">
+        {children}
+      </main>
     </>
   )
 }

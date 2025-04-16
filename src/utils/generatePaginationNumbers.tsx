@@ -5,7 +5,7 @@ export function generatePaginationNumbers(currentPage: number, totalPages:number
   }
 
   if(currentPage <= 3) {
-    return [1, 2, 3, "...", totalPages - 2, totalPages - 1, totalPages];
+    return [1, 2, 3, 4, "...", totalPages - 1, totalPages];
   }
 
   if(currentPage >= totalPages - 2) {

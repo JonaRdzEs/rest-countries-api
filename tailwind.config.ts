@@ -14,6 +14,8 @@ const config: Config = {
       "slate-gray": "#858585", // Light Mode Input
       "cloud-white": "#fafafa", // Light Mode Background
       "pure-white": "#ffffff", // Dark Mode Text & Light Mode Elements
+      'light-hover': '#EAEAEA', // Hover color for pagination component
+      'light-active': '#D5D5D5', // Active page color for pagination component
     },
   },
   plugins: [],

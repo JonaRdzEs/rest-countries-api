@@ -3,16 +3,20 @@
 import prisma from "@/lib/prisma";
 
 interface QueryParams {
-  regionId?: string,
-  name?: string,
-  take?: number,
-  page?: number
+  regionId?: string;
+  name?: string;
+  take?: number;
+  page?: number;
 }
 
-export async function getPaginatedCountries({ regionId  , name , page = 1, take =  25 }: QueryParams) {
-  
+export async function getPaginatedCountries({
+  regionId,
+  name,
+  page = 1,
+  take = 25,
+}: QueryParams) {
   const queryFilters = buildFilters({ regionId, name }) ?? {};
-  
+
   try {
     const [count, countries] = await Promise.all([
       prisma.country.count(queryFilters),
@@ -32,10 +36,10 @@ export async function getPaginatedCountries({ regionId  , name , page = 1, take 
           },
         },
         orderBy: {
-          name: "asc"
+          name: "asc",
         },
         ...queryFilters,
-      })
+      }),
     ]);
 
     const totalPages = Math.ceil(count / take);
@@ -53,7 +57,7 @@ export async function getPaginatedCountries({ regionId  , name , page = 1, take 
       ok: true,
       totalPages,
       countries: formattedCountries,
-    }
+    };
   } catch (error) {
     console.log(error);
     return {
@@ -63,29 +67,35 @@ export async function getPaginatedCountries({ regionId  , name , page = 1, take 
   }
 }
 
-const buildFilters = ({ regionId = "", name = "" }: { regionId?: string, name?: string }) => {
+function buildFilters({
+  regionId = "",
+  name = "",
+}: {
+  regionId?: string;
+  name?: string;
+}) {
   const nameFilter = {
     name: {
       contains: name,
-      mode: "insensitive"
-    }
+      mode: "insensitive",
+    },
   };
   const regionFilter = { regionId };
 
-  if(regionId && name) {
+  if (regionId && name) {
     return {
       where: {
         ...regionFilter,
-        ...nameFilter
-      }
-    }
-  } else if(regionId) {
+        ...nameFilter,
+      },
+    };
+  } else if (regionId) {
     return {
-      where: { ...regionFilter }
-    }
+      where: { ...regionFilter },
+    };
   } else if (name) {
     return {
-      where: { ...nameFilter }
-    }
+      where: { ...nameFilter },
+    };
   }
-};
+}
