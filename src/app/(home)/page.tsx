@@ -1,7 +1,6 @@
 import { CountryList, Pagination } from "@/components";
 import { getPaginatedCountries, getRegions } from "@/actions";
 import { SearchInput, RegionSelector } from "@/components";
-//import { redirect } from "next/navigation";
 
 interface Props {
   searchParams: {
@@ -21,7 +20,7 @@ export default async function Home({ searchParams }: Props) {
     getRegions(),
   ]);
 
-  const { countries = [], totalPages = 0 } = countriesResp;
+  const { countries, totalPages } = countriesResp;
   const { regions = [] } = regionsResp;
 
   return (

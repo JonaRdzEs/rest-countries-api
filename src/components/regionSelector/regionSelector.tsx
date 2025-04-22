@@ -30,7 +30,7 @@ export function RegionSelector({ regions }: Props) {
       defaultValue={searchParams.get("regionId") ?? ""}
       onChange={onSelectChange}
     >
-      <option value="" selected>Filter by Region</option>
+      <option value="">Filter by Region</option>
       {regions.map((region) => (
         <option key={region.id} value={region.id}>
           {region.name}

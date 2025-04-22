@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { TextInfo } from "./TextInfo";
 
 interface Props {
   id: string;
@@ -14,7 +15,7 @@ export function CountryCard({ id, name, flag, population, region, capital }: Pro
   return (
     <Link
       href={`/countries/${id}`}
-      className="block shadow-md rounded-md max-w-96 h-full hover:scale-105 transition-all"
+      className="block shadow-md rounded-md max-w-96 h-full hover:scale-105 transition-all bg-pure-white"
     >
       <Image
         width={384}
@@ -28,25 +29,16 @@ export function CountryCard({ id, name, flag, population, region, capital }: Pro
         <h4 className="font-bold text-charcoal-black text-center text-xl mb-3">
           {name}
         </h4>
-        <div className="flex justify-start items-center gap-1">
-          <span className="font-semibold text-charcoal-black text-sm">
-            Population:
-          </span>
-          <span className="text-sm">{population}</span>
-        </div>
-        <div className="flex justify-start items-center gap-1">
-          <span className="font-semibold text-charcoal-black text-sm">
-            Region:
-          </span>
-          <span className="text-sm">{region}</span>
-        </div>
+        <TextInfo title="Population:">
+          {population}
+        </TextInfo>
+        <TextInfo title="Region:">
+          {region}
+        </TextInfo>
         {capital && (
-          <div className="flex justify-start items-center gap-1">
-            <span className="font-semibold text-charcoal-black text-sm">
-              Capital:
-            </span>
-            <span className="text-sm">{capital}</span>
-          </div>
+          <TextInfo title="Capital:">
+            {capital}
+          </TextInfo>
         )}
       </div>
     </Link>

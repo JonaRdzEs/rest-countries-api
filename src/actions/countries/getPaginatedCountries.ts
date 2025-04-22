@@ -1,6 +1,7 @@
 "use server";
 
 import prisma from "@/lib/prisma";
+import type { SimpleCountry } from "@/types";
 
 interface QueryParams {
   regionId?: string;
@@ -9,12 +10,19 @@ interface QueryParams {
   page?: number;
 }
 
+interface Response {
+  ok: boolean;
+  message?: string;
+  totalPages: number;
+  countries: SimpleCountry[]; 
+}
+
 export async function getPaginatedCountries({
   regionId,
   name,
   page = 1,
-  take = 25,
-}: QueryParams) {
+  take = 20,
+}: QueryParams): Promise<Response> {
   const queryFilters = buildFilters({ regionId, name }) ?? {};
 
   try {
@@ -63,6 +71,8 @@ export async function getPaginatedCountries({
     return {
       ok: false,
       message: "Error fetching countries",
+      totalPages: 0,
+      countries: [],
     };
   }
 }
