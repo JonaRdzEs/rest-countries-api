@@ -1,6 +1,6 @@
 import { CountryList, Pagination } from "@/components";
 import { getPaginatedCountries, getRegions } from "@/actions";
-import { SearchInput, RegionSelector } from "@/components";
+import { SearchInput, RegionSelector, NoContent, ZoomExclamation } from "@/components";
 
 interface Props {
   searchParams: {
@@ -35,7 +35,15 @@ export default async function Home({ searchParams }: Props) {
           <Pagination totalPages={totalPages} />
         </>
       ) : (
-        <h1>Country does not exist</h1>
+        <NoContent title="Country Not Found" icon={<ZoomExclamation />}>
+          <p className="text-lg text-charcoal-black text-center">
+            Oops! The country you’re looking for doesn’t seem to exist. It might
+            have been removed, renamed, or never existed at all.
+          </p>
+          <p className="text-lg text-charcoal-black text-center">
+            Try searching again to explore other countries.
+          </p>
+        </NoContent>
       )}
     </div>
   );

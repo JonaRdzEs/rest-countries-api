@@ -29,14 +29,14 @@ export function CountryCard({ id, name, flag, population, region, capital }: Pro
         <h4 className="font-bold text-charcoal-black text-center text-xl mb-3">
           {name}
         </h4>
-        <TextInfo title="Population:">
+        <TextInfo title="Population:" textClassName="text-sm sm:text-base">
           {population}
         </TextInfo>
-        <TextInfo title="Region:">
+        <TextInfo title="Region:" textClassName="text-sm sm:text-base">
           {region}
         </TextInfo>
         {capital && (
-          <TextInfo title="Capital:">
+          <TextInfo title="Capital:" textClassName="text-sm sm:text-base">
             {capital}
           </TextInfo>
         )}

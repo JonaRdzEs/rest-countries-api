@@ -1,7 +1,12 @@
 export { BorderCountries } from "./country/BorderCountries";
 export { CountryList } from "./country/CountryList";
+export { FileSearchIcon } from "./icons/FileSearchIcon";
+export { FlagOff } from "./icons/FlagOff";
 export { Header } from "./header/Header";
+export { Link } from "./link/Link";
+export { NoContent } from "./noContent/noContent";
 export { Pagination } from "./pagination/Pagination";
 export { RegionSelector } from "./regionSelector/regionSelector";
 export { SearchInput } from "./searchInput/SearchInput";
 export { TextInfo } from "./country/TextInfo";
+export { ZoomExclamation } from "./icons/ZoomExclamation";

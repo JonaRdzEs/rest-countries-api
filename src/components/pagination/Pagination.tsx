@@ -46,13 +46,13 @@ export function Pagination({ totalPages }: Props) {
   return (
     <>
       <nav aria-label="Countries page navigation" className="my-7 flex justify-center items-center">
-        <ul className="flex justify-center items-center flex-wrap gap-1 w-full max-w-md sm:gap-3">
+        <ul className="flex justify-center items-center flex-wrap gap-1 w-full max-w-xl sm:gap-3">
           <li>
             <Link
               href={createPageUrl(currentPage - 1)}
               tabIndex={-1}
               aria-disabled={currentPage <= 1}
-              className="w-7 h-7 flex justify-center items-center rounded-md text-charcoal-black hover:bg-light-hover"
+              className="w-10 h-10 flex justify-center items-center rounded-md text-charcoal-black shadow-md bg-pure-white hover:bg-light-hover lg:w-12 lg:h-12 "
             >
               <svg
                 className="w-3 h-3"
@@ -74,11 +74,11 @@ export function Pagination({ totalPages }: Props) {
             </Link>
           </li>
           {pages.map((page, index) => (
-            <li key={`${page}-${index}`} className={`text-xs sm:text-md md:text-base xl:text-lg`}>
+            <li key={`${page}-${index}`} className={`text-xs sm:text-base xl:text-lg`}>
               <Link
                 href={createPageUrl(page)}
-                className={`w-7 h-7 flex justify-center items-center rounded-md ${
-                  currentPage === page ? "bg-light-active hover:bg-light-active" : "hover:bg-light-hover"
+                className={`w-10 h-10 flex justify-center items-center rounded-md shadow-md lg:w-12 lg:h-12 ${
+                  currentPage === page ? "bg-light-active hover:bg-light-active" : "bg-pure-white hover:bg-light-hover"
                 }`}
               >
                 {page}
@@ -89,7 +89,7 @@ export function Pagination({ totalPages }: Props) {
             <Link
               href={createPageUrl(currentPage + 1)}
               aria-disabled={currentPage === totalPages}
-              className="w-7 h-7 flex justify-center items-center rounded-md hover:bg-light-hover text-charcoal-black"
+              className="w-10 h-10 flex justify-center items-center rounded-md text-charcoal-black shadow-md bg-pure-white hover:bg-light-hover lg:w-12 lg:h-12 "
             >
               <svg
                 className="w-3 h-3"
