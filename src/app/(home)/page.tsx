@@ -11,7 +11,8 @@ interface Props {
 }
 
 export default async function Home({ searchParams }: Props) {
-  const page = searchParams.page ? parseInt(searchParams.page) : 1;
+  const parsedPage = parseInt(searchParams.page ?? "");
+  const page = isNaN(parsedPage) ? 1 : parsedPage;
   const country = searchParams.country;
   const regionId = searchParams.regionId;
 

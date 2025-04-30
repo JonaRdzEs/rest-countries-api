@@ -1,6 +1,6 @@
 "use client";
 
-import { type ChangeEvent } from "react";
+import Select from "react-select";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import type { Region } from "@/types";
 
@@ -13,29 +13,35 @@ export function RegionSelector({ regions }: Props) {
   const pathname = usePathname();
   const { replace } = useRouter();
 
-  const onSelectChange = (e: ChangeEvent<HTMLSelectElement>) => {
+  const onSelectChange = (value?: string) => {
     const params = new URLSearchParams(searchParams);
-    const regionId = e.target.value;
-    if (regionId) {
-      params.set("regionId", regionId);
+    if (value) {
+      params.set("regionId", value);
     } else {
       params.delete("regionId");
     }
     replace(`${pathname}?${params.toString()}`);
   };
 
+  const regionId: string = searchParams.get("regionId") ?? "";
+  const options = [...regions.map((region) => ({ value: region.id, label: region.name }))]
+
   return (
-    <select
-      className="w-full max-w-48 py-2 px-3 h-12 bg-pure-white shadow-md rounded-sm text-charcoal-black  focus:ring-blue-500 focus:border-blue-500 block dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      defaultValue={searchParams.get("regionId") ?? ""}
-      onChange={onSelectChange}
-    >
-      <option value="">Filter by Region</option>
-      {regions.map((region) => (
-        <option key={region.id} value={region.id}>
-          {region.name}
-        </option>
-      ))}
-    </select>
+    <Select 
+      unstyled 
+      isSearchable={false} 
+      isClearable
+      className="w-full max-w-52 py-2 px-3 h-12 bg-pure-white shadow-md rounded-md text-charcoal-black" 
+      options={options}
+      defaultValue={options.find(opt => opt.value === regionId)}
+      placeholder="Filter by Region"
+      onChange={(value) => onSelectChange(value?.value)}
+      classNames={{
+        container: (state) => state.isFocused ? "border border-charcoal-black" : "",
+        clearIndicator: () => "mr-2",
+        menu: () => "bg-pure-white shadow-md rounded-md mt-0.5 -ml-3 p-0",
+        option: (state) =>  `${state.isSelected ? "bg-light-active" : "hover:bg-light-hover"} p-1.5 pl-4  hover:cursor-pointer`,
+      }}
+    />
   );
 }
