@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Select from "react-select";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
 import type { Region } from "@/types";
@@ -9,9 +10,14 @@ interface Props {
 }
 
 export function RegionSelector({ regions }: Props) {
+  const [loaded, setLoaded] = useState(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
+
+  useEffect(() => {
+    setLoaded(true)
+  }, []);
 
   const onSelectChange = (value?: string) => {
     const params = new URLSearchParams(searchParams);
@@ -26,7 +32,7 @@ export function RegionSelector({ regions }: Props) {
   const regionId: string = searchParams.get("regionId") ?? "";
   const options = [...regions.map((region) => ({ value: region.id, label: region.name }))]
 
-  return (
+  return loaded && (
     <Select 
       unstyled 
       isSearchable={false} 
