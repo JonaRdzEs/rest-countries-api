@@ -7,6 +7,7 @@ export { Link } from "./link/Link";
 export { Moon } from "./icons/Moon";
 export { NoContent } from "./noContent/noContent";
 export { Pagination } from "./pagination/Pagination";
+export { Providers } from "./providers/Providers";
 export { RegionSelector } from "./regionSelector/regionSelector";
 export { SearchInput } from "./searchInput/SearchInput";
 export { Sun } from "./icons/Sun";

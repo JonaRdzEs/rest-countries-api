@@ -12,7 +12,7 @@ export function NoContent({ children, icon, title, withButton = false }: Props) 
   return (
     <div className="h-[80vh] m-auto flex justify-center items-center gap-5 flex-col p-3">
       {icon}
-      <h1 className="text-3xl font-bold text-charcoal-black text-center">
+      <h1 className="text-3xl font-bold text-charcoal-black text-center dark:text-pure-white">
         {title}
       </h1>
       {children}

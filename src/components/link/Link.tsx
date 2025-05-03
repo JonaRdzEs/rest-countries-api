@@ -9,7 +9,7 @@ interface Props {
 
 export function Link({ children, path, className = "" }: Props) {
   return (
-    <NextLink href={path} className={`shadow-md rounded-md flex justify-center items-center bg-pure-white ${className} hover:bg-light-hover`}>
+    <NextLink href={path} className={`shadow-md rounded-md flex justify-center items-center text-charcoal-black bg-pure-white ${className} hover:bg-light-hover dark:text-pure-white dark:bg-deep-navy dark:hover:bg-dark-hover`}>
       {children}
     </NextLink>
   );

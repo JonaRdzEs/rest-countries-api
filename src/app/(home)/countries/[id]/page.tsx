@@ -19,10 +19,10 @@ export default async function CountryPage({ params }: Props) {
   if (!country) {
     return (
       <NoContent title="Country Not Found" icon={<FlagOff />} withButton>
-        <p className="text-lg text-charcoal-black text-center">
+        <p className="text-lg text-charcoal-black text-center dark:text-pure-white">
           We couldn’t find any information for the country you’re looking for.
         </p>
-        <p className="text-lg text-charcoal-black text-center">
+        <p className="text-lg text-charcoal-black text-center dark:text-pure-white">
           Please check the country ID in the URL or return to the countries list.
         </p>
       </NoContent>
@@ -34,7 +34,7 @@ export default async function CountryPage({ params }: Props) {
       <Link path="/" className="gap-2 w-36 p-3">
         <>
           <svg
-            className="w-4 h-4 text-charcoal-black"
+            className="w-4 h-4 text-charcoal-black dark:text-pure-white"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
             width="24"
@@ -62,7 +62,7 @@ export default async function CountryPage({ params }: Props) {
           height={550}
         />
         <div className="w-full max-w-[720px] mx-auto">
-            <h1 className="font-bold text-charcoal-black text-3xl my-6 md:flex-grow xl:text-4xl">{country.name}</h1>
+            <h1 className="font-bold text-charcoal-black text-3xl my-6 md:flex-grow xl:text-4xl dark:text-pure-white">{country.name}</h1>
             <div className="w-full flex justify-start items-start gap-8 flex-wrap sm:justify-between sm:flex-nowrap xl:justify-start">
               <div className="flex justify-start items-stretch flex-col gap-3">
                 <TextInfo title="Native Name:" textClassName="sm:text-lg md:text-xl">{country.nativeName}</TextInfo>
@@ -87,7 +87,7 @@ export default async function CountryPage({ params }: Props) {
             </div>
             {country.borders.length > 0 && (
               <div className="my-8">
-                <h4 className="text-base font-bold text-charcoal-black mb-5">
+                <h4 className="text-base font-bold text-charcoal-black mb-5 dark:text-pure-white">
                   Border Countries:
                 </h4>
                 <BorderCountries countries={country.borders} />

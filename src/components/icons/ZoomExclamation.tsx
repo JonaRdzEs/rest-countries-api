@@ -1,7 +1,7 @@
 export function ZoomExclamation() {
   return (
     <svg
-      className="w-28 h-28 text-charcoal-black"
+      className="w-28 h-28 text-charcoal-black dark:text-pure-white"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
       fill="none"

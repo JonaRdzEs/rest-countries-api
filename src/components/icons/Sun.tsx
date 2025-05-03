@@ -1,7 +1,7 @@
 export function Sun() {
   return (
     <svg
-      className="w-4 h-4"
+      className="w-4 h-4 text-charcoal-black dark:text-pure-white"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
       width="24"

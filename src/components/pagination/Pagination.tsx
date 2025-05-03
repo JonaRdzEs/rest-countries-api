@@ -52,10 +52,10 @@ export function Pagination({ totalPages }: Props) {
               href={createPageUrl(currentPage - 1)}
               tabIndex={-1}
               aria-disabled={currentPage <= 1}
-              className="w-10 h-10 flex justify-center items-center rounded-md text-charcoal-black shadow-md bg-pure-white hover:bg-light-hover lg:w-12 lg:h-12 "
+              className="w-10 h-10 flex justify-center items-center rounded-md text-charcoal-black shadow-md bg-pure-white hover:bg-light-hover lg:w-12 lg:h-12 dark:text-pure-white dark:bg-deep-navy dark:hover:bg-dark-hover"
             >
               <svg
-                className="w-3 h-3"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -77,8 +77,8 @@ export function Pagination({ totalPages }: Props) {
             <li key={`${page}-${index}`} className={`text-xs sm:text-base xl:text-lg`}>
               <Link
                 href={createPageUrl(page)}
-                className={`w-10 h-10 flex justify-center items-center rounded-md shadow-md lg:w-12 lg:h-12 ${
-                  currentPage === page ? "bg-light-active hover:bg-light-active" : "bg-pure-white hover:bg-light-hover"
+                className={`w-10 h-10 flex justify-center items-center rounded-md shadow-md lg:w-12 lg:h-12 text-charcoal-black dark:text-pure-white ${
+                  currentPage === page ? "bg-light-active hover:bg-light-active dark:bg-dark-active dark:hover:bg-dark-hover" : "bg-pure-white hover:bg-light-hover dark:bg-deep-navy dark:hover:bg-dark-hover"
                 }`}
               >
                 {page}
@@ -89,10 +89,10 @@ export function Pagination({ totalPages }: Props) {
             <Link
               href={createPageUrl(currentPage + 1)}
               aria-disabled={currentPage === totalPages}
-              className="w-10 h-10 flex justify-center items-center rounded-md text-charcoal-black shadow-md bg-pure-white hover:bg-light-hover lg:w-12 lg:h-12 "
+              className="w-10 h-10 flex justify-center items-center rounded-md text-charcoal-black shadow-md bg-pure-white hover:bg-light-hover lg:w-12 lg:h-12 dark:text-pure-white dark:bg-deep-navy dark:hover:bg-dark-hover"
             >
               <svg
-                className="w-3 h-3"
+                className="w-4 h-4"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"

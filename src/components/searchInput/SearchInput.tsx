@@ -24,7 +24,7 @@ export function SearchInput() {
   return (
     <div className="w-full h-12 max-w-md relative overflow-hidden shadow-md">
       <svg
-        className="w-5 h-5 text-slate-gray absolute left-4 top-3"
+        className="w-5 h-5 text-slate-gray absolute left-4 top-3 dark:text-pure-white"
         aria-hidden="true"
         focusable={false}
         xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export function SearchInput() {
       </svg>
 
       <input
-        className="w-full h-full py-2 pl-11 pr-4 text-slate-gray rounded-md"
+        className="w-full h-full py-2 pl-11 pr-4 text-slate-gray rounded-md dark:bg-deep-navy dark:text-pure-white"
         defaultValue={searchParams.get("country") ?? ""}
         onChange={debounce((e: ChangeEvent<HTMLInputElement>) => handleSearch(e), 500)}
         placeholder="Search for a country..."

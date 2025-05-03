@@ -12,11 +12,13 @@ const config: Config = {
       "deep-navy": "#2b3945", // Dark Mode Elements
       "midnight-blue": "#202c37", // Dark Mode Background
       "charcoal-black": "#111517", // Light Mode Text
-      "slate-gray": "#858585", // Light Mode Input
+      "slate-gray": "#858585", // Input Text
       "cloud-white": "#fafafa", // Light Mode Background
       "pure-white": "#ffffff", // Dark Mode Text & Light Mode Elements
-      'light-hover': '#EAEAEA', // Hover color for pagination component
-      'light-active': '#D5D5D5', // Active page color for pagination component
+      "light-hover": "#eaeaea", // Hover color for components
+      "light-active": "#d5d5d5", // Active color for  components
+      "dark-hover": "#354a5a",  // Hover color for components
+      "dark-active": "#1f2e3a" // Active color for components
     },
   },
   plugins: [],

@@ -15,7 +15,7 @@ export function CountryCard({ id, name, flag, population, region, capital }: Pro
   return (
     <Link
       href={`/countries/${id}`}
-      className="block shadow-md rounded-md max-w-96 h-full hover:scale-105 transition-all bg-pure-white"
+      className="block shadow-md rounded-md max-w-96 h-full hover:scale-105 transition-all bg-pure-white dark:bg-deep-navy"
     >
       <Image
         width={384}
@@ -26,7 +26,7 @@ export function CountryCard({ id, name, flag, population, region, capital }: Pro
         style={{ width: "384px", height: "192px" }}
       />
       <div className="py-3 px-6 flex justify-stretch items-start gap-1 flex-col">
-        <h4 className="font-bold text-charcoal-black text-center text-xl mb-3">
+        <h4 className="font-bold text-charcoal-black text-center text-xl mb-3 dark:text-pure-white">
           {name}
         </h4>
         <TextInfo title="Population:" textClassName="text-sm sm:text-base">

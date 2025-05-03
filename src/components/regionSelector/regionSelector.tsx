@@ -10,13 +10,13 @@ interface Props {
 }
 
 export function RegionSelector({ regions }: Props) {
-  const [loaded, setLoaded] = useState(false);
+  const [mounted, setMounted] = useState<boolean>(false);
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
 
   useEffect(() => {
-    setLoaded(true)
+    setMounted(true);
   }, []);
 
   const onSelectChange = (value?: string) => {
@@ -32,21 +32,27 @@ export function RegionSelector({ regions }: Props) {
   const regionId: string = searchParams.get("regionId") ?? "";
   const options = [...regions.map((region) => ({ value: region.id, label: region.name }))]
 
-  return loaded && (
+  if(!mounted) {
+    return (
+      <div className="w-full max-w-52 h-12 rounded-md animate-pulse bg-light-hover dark:bg-dark-hover" />
+    )
+  }
+
+  return (
     <Select 
       unstyled 
       isSearchable={false} 
       isClearable
-      className="w-full max-w-52 py-2 px-3 h-12 bg-pure-white shadow-md rounded-md text-charcoal-black" 
+      className="w-full max-w-52 py-2 px-3 h-12 bg-pure-white shadow-md rounded-md text-charcoal-black dark:text-pure-white dark:bg-deep-navy" 
       options={options}
       defaultValue={options.find(opt => opt.value === regionId)}
       placeholder="Filter by Region"
       onChange={(value) => onSelectChange(value?.value)}
       classNames={{
-        container: (state) => state.isFocused ? "border border-charcoal-black" : "",
+        container: (state) => state.isFocused ? "border border-charcoal-black dark:border-pure-white" : "",
         clearIndicator: () => "mr-2",
-        menu: () => "bg-pure-white shadow-md rounded-md mt-0.5 -ml-3 p-0",
-        option: (state) =>  `${state.isSelected ? "bg-light-active" : "hover:bg-light-hover"} p-1.5 pl-4  hover:cursor-pointer`,
+        menu: () => "bg-pure-white shadow-md rounded-md mt-1 -ml-3 p-0 dark:bg-deep-navy",
+        option: (state) =>  `${state.isSelected ? "bg-light-active dark:bg-dark-active" : "hover:bg-light-hover dark:hover:bg-dark-hover"} p-1.5 pl-4  hover:cursor-pointer`,
       }}
     />
   );

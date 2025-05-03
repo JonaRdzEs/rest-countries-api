@@ -9,8 +9,8 @@ interface Props {
 export function TextInfo({ textClassName = "", title, children }: Props) {
   return (
     <div className="flex justify-start items-center gap-1">
-      <span className={`font-semibold text-charcoal-black ${textClassName}`}>{title}</span>
-      <span className={`text-charcoal-black ${textClassName}`}>{children}</span>
+      <span className={`font-semibold text-charcoal-black dark:text-pure-white ${textClassName}`}>{title}</span>
+      <span className={`text-charcoal-black dark:text-pure-white ${textClassName}`}>{children}</span>
     </div>
   );
 }
