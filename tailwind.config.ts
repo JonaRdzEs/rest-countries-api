@@ -18,7 +18,7 @@ const config: Config = {
       "light-hover": "#eaeaea", // Hover color for components
       "light-active": "#d5d5d5", // Active color for  components
       "dark-hover": "#354a5a",  // Hover color for components
-      "dark-active": "#1f2e3a" // Active color for components
+      "dark-active": "#12202a" // Active color for components
     },
   },
   plugins: [],

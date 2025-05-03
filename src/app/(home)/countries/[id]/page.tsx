@@ -1,12 +1,41 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { BorderCountries, TextInfo, Link, NoContent, FlagOff } from "@/components";
-import { getCountryById } from "@/actions";
+import { getCountryById, getPaginatedCountries } from "@/actions";
 
 interface Props {
   params: {
     id: string;
   };
+}
+
+export async function generateStaticParams () {
+  try {
+    const { countries } = await getPaginatedCountries({ take: 30 });
+    return countries.map((country) => ({
+      id: country.id,
+    }));
+  } catch (error) {
+    console.log(error);
+    return [];
+  }
+};
+
+export async function generateMetadata({ params}: Props):Promise<Metadata> {
+  const defaultMetadata = { title: "Country not found" };
+  try {
+    const { country} = await getCountryById(params.id);
+    if(!country) return defaultMetadata;
+    const { name } = country;
+    return {
+      title: name,
+      description: `Learn key facts about ${name} — including its population, capital, region, and more. A simple and informative way to explore world countries through the REST Countries API`
+    }
+  } catch (error) {
+    console.log(error);
+    return defaultMetadata;
+  }
 }
 
 export default async function CountryPage({ params }: Props) {
