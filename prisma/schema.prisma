@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Country {
+  id             String   @id @default(uuid())
+  name           String
+  topLevelDomain String[]
+  alpha2Code     String
+  alpha3Code     String
+  callingCodes   String[]
+  capital        String?
+  altSpellings   String[]
+  subregion      String
+  population     Int
+  latitude Int?
+  longitude Int?
+  demonym        String
+  area           Int?
+  timezones      String[]
+  borders        String[]
+  nativeName     String
+  numericCode    String
+  cioc        String?
+  independent Boolean
+  gini        Int?
+
+  //relations
+  region Region @relation(fields: [regionId], references: [id])
+  regionId String
+
+  Flag        Flag[]
+  Currency    Currency[]
+  Language    Language[]
+  Translations Translation?
+  RegionalBloc RegionalBloc[]
+}
+
+model Region {
+  id   String @id @default(uuid())
+  name String
+
+  country Country[]
+}
+
+model Flag {
+  id  Int    @id @default(autoincrement())
+  url String
+
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+}
+
+model Currency {
+  id     String @id @default(uuid())
+  code   String
+  name   String
+  symbol String
+
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+}
+
+model Language {
+  id         String  @id @default(uuid())
+  iso639_1   String?
+  iso639_2   String
+  name       String
+  nativeName String?
+
+  country   Country @relation(fields: [countryId], references: [id])
+  countryId String
+}
+
+model Translation {
+  id Int     @id @default(autoincrement())
+  br String
+  pt String
+  nl String
+  hr String
+  fa String?
+  de String
+  es String
+  fr String
+  ja String
+  it String
+  hu String
+
+  country Country @relation(fields: [countryId], references: [id])
+  countryId String @unique
+}
+
+model RegionalBloc {
+  id            String   @id @default(uuid())
+  acronym       String
+  name          String
+  otherNames    String[]
+  otherAcronyms String[]
+
+  country Country @relation(fields: [countryId], references: [id])
+  countryId String
+}
