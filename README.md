@@ -16,7 +16,11 @@ Make sure Docker is running:
 ### 5. Apply Prisma Migrations
 ``` npx prisma migrate dev ```
 
-### 6. Run the Development Server
+### 6. Seed the Database  
+Run the following command to populate the database with initial data:
+``` npm run seed ```
+
+### 7. Run the Development Server
 ``` npm run dev ```
 
 The app should now be running on http://localhost:3000
