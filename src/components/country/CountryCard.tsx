@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { TextInfo } from "./TextInfo";
+import { populationFormat } from "@/utils";
 
 interface Props {
   id: string;
@@ -30,7 +31,7 @@ export function CountryCard({ id, name, flag, population, region, capital }: Pro
           {name}
         </h4>
         <TextInfo title="Population:" textClassName="text-sm sm:text-base">
-          {population}
+          {populationFormat(population)}
         </TextInfo>
         <TextInfo title="Region:" textClassName="text-sm sm:text-base">
           {region}
