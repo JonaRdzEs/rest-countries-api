@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { BorderCountries, TextInfo, Link, NoContent, FlagOff } from "@/components";
 import { getCountryById, getPaginatedCountries } from "@/actions";
+import { populationFormat } from "@/utils";
 
 interface Props {
   params: {
@@ -95,7 +96,7 @@ export default async function CountryPage({ params }: Props) {
             <div className="w-full flex justify-start items-start gap-8 flex-wrap sm:justify-between sm:flex-nowrap xl:justify-start">
               <div className="flex justify-start items-stretch flex-col gap-3">
                 <TextInfo title="Native Name:" textClassName="sm:text-lg md:text-xl">{country.nativeName}</TextInfo>
-                <TextInfo title="Population:" textClassName="sm:text-lg md:text-xl">{country.population}</TextInfo>
+                <TextInfo title="Population:" textClassName="sm:text-lg md:text-xl">{populationFormat(country.population)}</TextInfo>
                 <TextInfo title="Region:" textClassName="sm:text-lg md:text-xl">{country.region}</TextInfo>
                 <TextInfo title="Sub Region:" textClassName="sm:text-lg md:text-xl">{country.subregion}</TextInfo>
                 {country.capital && (
